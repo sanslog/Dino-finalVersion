@@ -53,7 +53,7 @@ void UI::showTutorial(ResourceManager& res, Dino& dino, Background& bg, Game& ga
         if (GetAsyncKeyState(VK_UP) & 0x8000)
         {
             dino.vy = -5;
-            dino.groundFlag -= 1;
+            //dino.groundFlag -= 1;
             dino.skill1_flag = 0;
             flag1 = 0;
         }
