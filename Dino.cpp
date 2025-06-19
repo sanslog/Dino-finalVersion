@@ -10,7 +10,7 @@ void Dino::reset() {
     gravity = 0.25;
     groundFlag = 1;
     ani = 0;
-    skill1 = false; skill2 = false;
+    skill1 = 0; skill2 = 0;
     skill1_flag = 1;
 }
 
@@ -18,7 +18,7 @@ void Dino::update() {
     vy += gravity;
     y += vy;
     x += vx;
-    ani = (ani + 1) % 9;
+    ani = (ani + 1) % 9;//动画帧循环播放
     // 落地判定
     double bottom = (400 - 46) / 4;
     if (y >= bottom - height) {
@@ -48,7 +48,7 @@ void Dino::handleInput(char input, int score, int tmpscore1) {
     if ((int)input == 77) { // 右
         vx = 1;
         if (score >= tmpscore1 && groundFlag >= 0 && skill1_flag == 0) {
-            x += 10;
+            x += 10;//使用技能的核心代码——加10
             skill1_flag = 1;
         }
     }
