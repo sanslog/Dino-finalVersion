@@ -5,7 +5,7 @@
 
 Game::Game()
     : dino(), obstacle1(1), obstacle2(2), background(), resourceManager(), ui(),
-    score(0), tmpscore1(10), tmpscore2(25), running(true), inTutorial(false) {
+    score(0), tmpscore1(1), tmpscore2(2), running(true), inTutorial(false) {
     srand((int)time(0));
     resourceManager.loadResources();
     reset();

@@ -32,6 +32,13 @@ void Dino::update() {
     else {
         ani = 3;
     }
+
+    // 边界判定，防止恐龙越界
+    if (x < 0) x = 0;
+    if (x >= 235) x = 235;
+    if (y < 0) y = 0;
+    //if (x < 0) x = 0;
+    //if (x > 1000 - width) x = 1000 - width;
 }
 
 void Dino::handleInput(char input, int score, int tmpscore1) {
@@ -39,6 +46,7 @@ void Dino::handleInput(char input, int score, int tmpscore1) {
     if ((int)input == 72 && groundFlag >= 1) { // 上
         vy = -5;
         groundFlag -= 1;
+        if (groundFlag < 0) groundFlag = 0;
         skill1_flag = 0;
     }
     if ((int)input == 80) { // 下
