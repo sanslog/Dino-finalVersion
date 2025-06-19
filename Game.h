@@ -9,12 +9,12 @@ class Game {
 public:
     Game();
     void run();
-    void reset();
 
 private:
     void processInput();
     void update();
     void render();
+    void reset();
 
     Dino dino;
     Obstacle obstacle1, obstacle2;

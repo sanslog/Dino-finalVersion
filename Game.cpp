@@ -1,7 +1,6 @@
 #include "Game.h"
 #include <conio.h>
 #include <ctime>
-#include<Windows.h>
 
 Game::Game()
     : dino(), obstacle1(1), obstacle2(2), background(), resourceManager(), ui(),
@@ -13,56 +12,32 @@ Game::Game()
 
 void Game::run() {
     ui.showStartScreen(resourceManager, dino, background);
-	// 等待用户按下空格键开始游戏
-    while (1) {
-        if (GetAsyncKeyState(VK_SPACE) & 0x8000) break;
-        if (GetAsyncKeyState('A') & 0x8000)
-        {
-            inTutorial = true;
-            ui.showTutorial(resourceManager, dino, background, *this);
-            break;
-        }
-        if (GetAsyncKeyState('B') & 0x8000)
-        {
-            running = false;
-            break;
-        }
-        Sleep(10);
-    }
     while (running) {
-        BeginBatchDraw();//解决闪烁问题
         processInput();
         update();
         render();
-		EndBatchDraw();//解决闪烁问题
         Sleep(24);
     }
 }
 
 void Game::processInput() {
-        if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+    if (_kbhit()) {
+        char input = _getch();
+        if (input == ' ') {
             reset();
-        else if (GetAsyncKeyState('A') & 0x8000)
-        {
+        }
+        else if (input == 'A' || input == 'a') {
             inTutorial = true;
             ui.showTutorial(resourceManager, dino, background, *this);
         }
-        else if (GetAsyncKeyState('B') & 0x8000) {
+        else if (input == 'B' || input == 'b') {
             running = false;
         }
-        // 方向键：控制恐龙
-        else if (GetAsyncKeyState(VK_UP) & 0x8000) {
-            dino.handleInput(72, score, tmpscore1); // 72 = 上方向键
+        else if ((int)input == -32) {
+            input = _getch();
+            dino.handleInput(input, score, tmpscore1);
         }
-        else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-            dino.handleInput(80, score, tmpscore1); // 80 = 下方向键
-        }
-        else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-            dino.handleInput(75, score, tmpscore1); // 75 = 左方向键
-        }
-        else if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-            dino.handleInput(77, score, tmpscore1); // 77 = 右方向键
-        }
+    }
 }
 
 void Game::update() {

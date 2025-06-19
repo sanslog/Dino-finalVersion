@@ -144,21 +144,10 @@
     <Image Include="res\Tree.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
-    <ClInclude Include="Dino.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Dino.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
