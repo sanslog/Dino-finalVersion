@@ -26,8 +26,7 @@ void Dino::update() {
         y = bottom - height;
         groundFlag = 1;
         skill1_flag = 1;
-        if (skill2)
-            groundFlag = 2;
+        if (skill2) groundFlag = 2;
     }
     else {
         ani = 3;
@@ -37,8 +36,6 @@ void Dino::update() {
     if (x < 0) x = 0;
     if (x >= 235) x = 235;
     if (y < 0) y = 0;
-    //if (x < 0) x = 0;
-    //if (x > 1000 - width) x = 1000 - width;
 }
 
 void Dino::handleInput(char input, int score, int tmpscore1) {
