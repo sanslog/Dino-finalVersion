@@ -10,7 +10,7 @@ Game::Game()
     reset();
 }
 
-void Game::run() {
+void Game::run() {//游戏开始通道
     ui.showStartScreen(resourceManager, dino, background);
     while (running) {
         processInput();
@@ -77,7 +77,7 @@ void Game::render() {
     ui.drawGame(resourceManager, dino, obstacle1, obstacle2, background, score);
 }
 
-void Game::reset() {
+void Game::reset() {//重置游戏
     dino.reset();
     obstacle1.reset(0);
     obstacle2.reset(obstacle1.x);
