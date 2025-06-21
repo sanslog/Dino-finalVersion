@@ -50,8 +50,7 @@ void UI::showTutorial(ResourceManager& res, Dino& dino, Background& bg, Game& ga
     int flag1 = 1, flag2 = 1, flag3 = 1, flag4 = 1, flag5 = 1;
     int width = 1000, height = 400;
     while (1) {
-        dino.groundFlag = 2;
-        if (GetAsyncKeyState(VK_UP) & 0x8000)
+        if (GetAsyncKeyState(VK_UP) & 0x8000 && dino.groundFlag == 1)
         {
             dino.vy = -5;
             dino.groundFlag -= 1;
